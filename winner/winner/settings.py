@@ -32,8 +32,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Sistema
     'app',
+    'instituicao',
+    'login',
     'home',
+    'aluno',
+    'colaborador',
+
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',
@@ -108,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Fortaleza'
 
 USE_I18N = True
 

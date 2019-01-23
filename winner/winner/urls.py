@@ -16,28 +16,12 @@ from django.conf.urls import include
 
 urlpatterns = [
     # Examples:
-    url(r'^$', app.views.home, name='home'),
+    url(r'^$', include('instituicao.urls')),
+    url(r'^instituicao/', include('instituicao.urls')),
+    url(r'^login/', include('login.urls')),
     url(r'^home/', include('home.urls')),
-    url(r'^contact$', app.views.contact, name='contact'),
-    url(r'^about$', app.views.about, name='about'),
-    url(r'^login/$',
-        django.contrib.auth.views.login,
-        {
-            'template_name': 'app/login.html',
-            'authentication_form': app.forms.BootstrapAuthenticationForm,
-            'extra_context':
-            {
-                'title': 'Log in',
-                'year': datetime.now().year,
-            }
-        },
-        name='login'),
-    url(r'^logout$',
-        django.contrib.auth.views.logout,
-        {
-            'next_page': '/',
-        },
-        name='logout'),
+    url(r'^student/', include('aluno.urls')),
+    url(r'^crew/', include('colaborador.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

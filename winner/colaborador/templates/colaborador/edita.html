@@ -1,0 +1,42 @@
+﻿{% extends 'base.html' %}
+
+{% block body %}
+{% load static %}
+    {% if msg %}
+        <h1 style="text-align:center;">{{msg}}</h1><hr />
+    {%endif%}
+    <h1>Editar Colaborador</h1>
+    <hr />
+        <form method="post">
+        {% csrf_token %}
+            <input type="hidden" name="colaborador_id" value="{{colaborador_obj.id}}" />
+            <div class="form-row">
+                <div class="form-group col-md-9">
+                    <label for="inputName">Nome Completo </label>
+                    <input type="text" class="form-control" value="{{colaborador_obj.nome}}" name="nome" title="Digite o nome completo.">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputTel">Data de Nasc.</label>
+                    <input type="date" class="form-control" value="{{colaborador_obj.data_nasc|date:"Y-m-d"}}" name="data_nasc" title="Selecione a data de nascimento.">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputTel">Telefone</label>
+                    <input type="text" class="form-control" value="{{colaborador_obj.telefone}}" name="tel" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">                
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputCel">Celular</label>
+                    <input type="text" class="form-control" value="{{colaborador_obj.celular}}" name="cel" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">                
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail">E-mail</label>
+                    <input type="text" class="form-control" value="{{colaborador_obj.email}}" name="mail" title="Digite o e-mail.">
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-info float-right" formaction="/crew/save" title="Alterar registro do colaborador.">Salvar</button>
+                </div>
+            </div>
+        </form>
+{% endblock %}

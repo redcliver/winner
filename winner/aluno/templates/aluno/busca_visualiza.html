@@ -1,0 +1,27 @@
+﻿{% extends 'base.html' %}
+
+{% block body %}
+{% load static %}
+    {% if msg %}
+        <h1 style="text-align:center;">{{msg}}</h1><hr />
+    {%endif%}
+<h1>Selecione o Aluno</h1><hr /><br />
+    <form method="POST" action="/student/detail">
+    {%csrf_token%}
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <select name="aluno_id" class="form-control" required title="Selecione o aluno.">
+                <option disabled selected > -- Aluno -- </option>
+                {% for aluno in alunos %}
+                    <option value={{aluno.id}}>{{aluno.nome}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-info float-right" title="Visualizar aluno.">Visualizar</button>
+        </div>
+    </div>
+    </form>
+{% endblock %}
