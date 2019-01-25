@@ -1,0 +1,101 @@
+﻿{% extends 'base.html' %}
+
+
+{% block body %}
+{% load static %}
+    {% if msg %}
+    <h1 style="text-align:center;">{{msg}}</h1><hr />
+    {% endif %}
+    <h1>Editar Grupo</h1>
+    <hr />
+        <form method="post">
+        {% csrf_token %}
+            <input type="hidden" name="grupo_id" value="{{grupo_obj.id}}" />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputName">Nome </label>
+                    <input type="text" class="form-control" id="inputEmail4" name="nome" maxlength="200" value="{{grupo_obj.nome}}" title="Digite o nome do grupo." disabled>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputName">Livro </label>
+                    <input type="text" class="form-control" id="inputEmail4" value="{{grupo_obj.livro}}" name="livro" maxlength="200" title="Digite o livro do grupo." disabled>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputName">Página Atual</label>
+                    <input type="text" class="form-control" id="inputEmail4" value="{{grupo_obj.pag_atual}}" name="pagina" maxlength="4" title="Digite a página atual do grupo." disabled>
+                </div>
+                {% if grupo_obj.unidade == '1' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select  name="unidade" class="form-control" disabled>
+                        <option value="1" disabled selected>Tres Lagoas</option>
+                    </select>
+                </div>
+                {% endif %}
+                {% if grupo_obj.unidade == '2' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select  name="unidade" class="form-control"  disabled>
+                        <option value="2" selected disabled>Agua Clara</option>
+                    </select>
+                </div>
+                {% endif %}
+                {% if grupo_obj.unidade == '3' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select  name="unidade" class="form-control"  disabled>
+                        <option value="3" selected disabled>Ribas do Rio Pardo</option>
+                    </select>
+                </div>
+                {% endif %}
+                {% if grupo_obj.unidade == '4' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select  name="unidade" class="form-control" disabled>
+                        <option value="4" selected disabled>Campo Grande</option>
+                    </select>
+                </div>
+                {% endif %}
+                <div class="form-group col-md-12">
+                    <label for="inputName">Alunos<strong>*</strong></label>
+                    <select autofocus name="aluno_id" class="form-control" required >
+                        <option disabled selected> -- Alunos -- </option>
+                        {% for aluno in alunos %}
+                        <option value={{aluno.id}}>{{aluno.nome}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-info float-right" formaction="/group/edit/" title="Adicionar aluno ao grupo.">Adicionar</button>
+                </div>
+            </div>
+            {% if alunos_grupo %}
+            <hr />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <table class="table table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:10%;">#</th>
+                                <th scope="col" style="width:80%;">Nome</th>
+                                <th scope="col" style="width:10%;">Remover</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for alunos in alunos_grupo %}
+                                <tr>
+                                    <td style="width:10%;">{{alunos.id}}</td>
+                                    <td style="width:80%;">{{alunos.nome}}</td>
+                                    <td style="width:10%;"><button type="submit" name="aluno_id" value="{{alunos.id}}" class="btn btn-light" formaction="/group/remove" title="Remover aluno do grupo.">&#x274C;</button></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </form>
+{% endblock %}

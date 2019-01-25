@@ -1,0 +1,67 @@
+﻿{% extends 'base.html' %}
+
+
+{% block body %}
+{% load static %}
+    {% if msg %}
+    <h1 style="text-align:center;">{{msg}}</h1><hr />
+    {%endif%}
+    <h1>Classe</h1>
+    <hr />
+        <form method="post">
+        {% csrf_token %}
+            <input type="hidden" name="classe_id" value="{{classe_obj.id}}" />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputName">Nome da Classe </label>
+                    <input type="text" class="form-control" id="inputEmail4" name="nome" value="{{classe_obj.nome}}" maxlength="200" title="Digite o nome." disabled>
+                </div>
+                {% if classe_obj.unidade == '1' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select autofocus name="unidade" class="form-control" disabled>
+                        <option value="1" disabled selected>Tres Lagoas</option>
+                    </select>
+                </div>
+                {% endif %}
+                {% if classe_obj.unidade == '2' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select autofocus name="unidade" class="form-control"  disabled>
+                        <option value="2" selected disabled>Agua Clara</option>
+                    </select>
+                </div>
+                {% endif %}
+                {% if classe_obj.unidade == '3' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select autofocus name="unidade" class="form-control"  disabled>
+                        <option value="3" selected disabled>Ribas do Rio Pardo</option>
+                    </select>
+                </div>
+                {% endif %}
+                {% if classe_obj.unidade == '4' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select autofocus name="unidade" class="form-control" disabled>
+                        <option value="4" selected disabled>Campo Grande</option>
+                    </select>
+                </div>
+                {% endif %}
+                <div class="form-group col-md-3">
+                    <label for="inputName">Max. Alunos </label>
+                    <input type="text" class="form-control" id="inputEmail4" name="max_alunos" value="{{classe_obj.max_alunos}}" maxlength="4" title="Digite a quantidade de alunos." disabled>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputTel">Observação</label>
+                    <textarea class="form-control" name="obs" id="exampleFormControlTextarea1" rows="6" disabled>{{classe_obj.obs}}</textarea>
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-info float-right" formaction="/class/edit/" title="Editar registro de clasee.">Editar</button>
+                </div>
+            </div>
+        </form>
+{% endblock %}

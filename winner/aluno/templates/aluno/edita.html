@@ -31,6 +31,40 @@
                     <label for="inputEmail">E-mail</label>
                     <input type="text" class="form-control" value="{{aluno_obj.email}}" name="mail" title="Digite o e-mail.">
                 </div>
+                {% if aluno_obj.estado == '1' %}
+                <div class="form-group col-md-3">
+                    <label for="inputName">Estado </label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="estado" id="exampleRadios1" value="1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                        Ativo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="estado" id="exampleRadios2" value="2">
+                        <label class="form-check-label" for="exampleRadios2">
+                        Inativo
+                        </label>
+                    </div>
+                </div>
+                {% endif %}
+                {% if aluno_obj.estado == '2' %}
+                <div class="form-group col-md-3">
+                    <label for="inputName">Estado </label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="estado" id="exampleRadios1" value="1" />
+                        <label class="form-check-label" for="exampleRadios1">
+                        Ativo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="estado" id="exampleRadios2" value="2" checked />
+                        <label class="form-check-label" for="exampleRadios2">
+                        Inativo
+                        </label>
+                    </div>
+                </div>
+                {% endif %}
             </div>
             <br />
             <button type="submit" class="btn btn-info float-right" formaction="/student/save" title="Alterar registro do aluno.">Salvar</button>

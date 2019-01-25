@@ -1,0 +1,54 @@
+﻿{% extends 'base.html' %}
+
+
+{% block body %}
+{% load static %}
+    {% if msg %}
+    <h1 style="text-align:center;">{{msg}}</h1><hr />
+    {%endif%}
+    <h1>Nova Aula</h1>
+    <hr />
+        <form method="post">
+        {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputName">Grupo<strong>*</strong></label>
+                    <select autofocus name="grupo_id" class="form-control" required >
+                        <option disabled selected> -- Grupo -- </option>
+                        {% for grupo in grupos %}
+                        <option value={{grupo.id}}>{{grupo.nome}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="inputName">Classe<strong>*</strong></label>
+                    <select autofocus name="classe_id" class="form-control" required >
+                        <option disabled selected> -- Classes -- </option>
+                        {% for classe in classes %}
+                        <option value={{classe.id}}>{{classe.nome}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="inputName">Professor(a)<strong>*</strong></label>
+                    <select autofocus name="professor_id" class="form-control" required >
+                        <option disabled selected> -- Professor(a) -- </option>
+                        {% for colaborador in professores %}
+                        <option value={{colaborador.id}}>{{colaborador.nome}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                <label for="inputTel">Data</label>
+                <input type="datetime-local" class="form-control" name="data" required>
+            </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-info float-right" title="Criar novo grupo.">Criar</button>
+                </div>
+            </div>
+            
+        </form>
+{% endblock %}

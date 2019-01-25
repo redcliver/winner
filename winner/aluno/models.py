@@ -3,7 +3,12 @@ from django.utils import timezone
 
 # Create your models here.
 class aluno(models.Model):
+    ES = (
+        ('1', 'Ativo'),
+        ('2', 'Inativo'),
+    )
     id = models.AutoField(primary_key=True)
+    estado = models.CharField(max_length=1, choices=ES, default=1)
     nome = models.CharField(max_length=200)
     data_nasc = models.DateTimeField(null=True, blank=True)
     telefone = models.CharField(max_length=20, null=True, blank=True)

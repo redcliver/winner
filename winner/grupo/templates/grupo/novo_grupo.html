@@ -1,0 +1,45 @@
+﻿{% extends 'base.html' %}
+
+
+{% block body %}
+{% load static %}
+    {% if msg %}
+    <h1 style="text-align:center;">{{msg}}</h1><hr />
+    {%endif%}
+    <h1>Novo Grupo</h1>
+    <hr />
+        <form method="post">
+        {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputName">Nome </label>
+                    <input type="text" class="form-control" id="inputEmail4" name="nome" maxlength="200" required autofocus title="Digite o nome do grupo.">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputName">Livro </label>
+                    <input type="text" class="form-control" id="inputEmail4" name="livro" maxlength="200" title="Digite o livro do grupo.">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputName">Página Atual</label>
+                    <input type="text" class="form-control" id="inputEmail4" name="pagina" maxlength="4" title="Digite a página atual do grupo.">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputName">Unidade<strong>*</strong></label>
+                    <select autofocus name="unidade" class="form-control" required>
+                        <option disabled selected> -- Unidades -- </option>
+                        <option value="1">Tres Lagoas</option>
+                        <option value="2">Agua Clara</option>
+                        <option value="3">Ribas do Rio Pardo</option>
+                        <option value="4">Campo Grande</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-info float-right" title="Criar novo grupo.">Criar</button>
+                </div>
+            </div>
+            
+        </form>
+{% endblock %}

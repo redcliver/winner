@@ -28,7 +28,32 @@
                     <label for="inputEmail">E-mail</label>
                     <input type="text" class="form-control" value="{{colaborador_obj.email}}" disabled>
                 </div>
+                {% if colaborador_obj.cargo == '1' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Função<strong>*</strong></label>
+                    <select name="cargo" class="form-control" required>
+                        <option value="1" selected disabled>Diretor(a)</option>
+                    </select>
+                </div>
+                {% endif %}
+                {% if colaborador_obj.cargo == '2' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Função<strong>*</strong></label>
+                    <select name="cargo" class="form-control" required>
+                        <option value="2" selected disabled>Professor(a)</option>
+                    </select>
+                </div>
+                {% endif %}
+                {% if colaborador_obj.cargo == '3' %}
+                <div class="form-group col-md-4">
+                    <label for="inputName">Função<strong>*</strong></label>
+                    <select name="cargo" class="form-control" >
+                        <option value="3" selected disabled>Recepcionista</option>
+                    </select>
+                </div>
+                {% endif %}
             </div>
+
             <br />
             <div class="form-row">
                 <div class="form-group col-md-12">

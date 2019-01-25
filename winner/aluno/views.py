@@ -11,7 +11,8 @@ def new(request):
         celular = request.POST.get('cel')
         email = request.POST.get('mail')
         data_nasc = request.POST.get('data_nasc')
-        novo_aluno = aluno(nome=name, telefone=telefone, celular=celular, data_nasc = data_nasc, email=email)
+        estado = request.POST.get('estado')
+        novo_aluno = aluno(nome=name, telefone=telefone, celular=celular, data_nasc = data_nasc, email=email, estado=estado)
         novo_aluno.save()
         msg = name + " salvo com sucesso!"
         return render(request, 'aluno/novo.html', {'title':'Novo Aluno', 'msg':msg})
@@ -33,11 +34,13 @@ def save(request):
         cel = request.POST.get('cel')
         mail = request.POST.get('mail')
         data_nasc = request.POST.get('data_nasc')
+        estado = request.POST.get('estado')
         aluno_obj.nome = nome
         aluno_obj.telefone = tel
         aluno_obj.celular = cel
         aluno_obj.email = mail
         aluno_obj.data_nasc = data_nasc
+        aluno_obj.estado = estado
         aluno_obj.save()
         msg = aluno_obj.nome + " editado(a) com sucesso!"
         return render(request, 'aluno/edita.html', {'title':'Editar Aluno', 'aluno_obj':aluno_obj, 'msg':msg})

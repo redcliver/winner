@@ -35,10 +35,12 @@ INSTALLED_APPS = [
     # Sistema
     'app',
     'instituicao',
-    'login',
+    'sistema_login',
     'home',
     'aluno',
     'colaborador',
+    'classe',
+    'grupo',
 
     # Add your apps here to enable them
     'django.contrib.admin',
@@ -131,3 +133,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+
+LOGIN_REDIRECT_URL = '/sistema_login'
