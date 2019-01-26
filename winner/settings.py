@@ -28,7 +28,10 @@ SECRET_KEY = 'd0516405-236f-4eec-afdd-7736339a91a3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'winneridiomas.herokuapp.com',
+    'localhost',
+    ]
 
 
 # Application definition
