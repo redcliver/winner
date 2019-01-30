@@ -1,0 +1,120 @@
+﻿{% extends 'base.html' %}
+
+
+{% block body %}
+{% load static %}
+    {% if msg %}
+<h1 style="text-align:center;">{{msg}}</h1><hr />
+    {% endif %}
+<h1>Editar Aula</h1>
+<hr />
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="aula_id" value="{{aula_obj.id}}" />
+    <div class="form-row">
+        <div class="form-group col-md-1">
+            <label for="inputName">ID </label>
+            <input type="text" class="form-control" id="inputEmail4" value="{{aula_obj.id}}" title="Número de identificação." disabled>
+        </div>
+        {% if aula_obj.estado == '1' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Estado</label>
+            <select name="estado" class="form-control">
+                <option value="1" selected>Agendada</option>
+                <option value="2">Lecionada</option>
+                <option value="3">Cancelada</option>
+            </select>
+        </div>
+        {% endif %}
+        {% if aula_obj.estado == '2' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Estado</label>
+            <select name="estado" class="form-control">
+                <option value="1">Agendada</option>
+                <option value="2" selected>Lecionada</option>
+                <option value="3">Cancelada</option>
+            </select>
+        </div>
+        {% endif %}
+        {% if aula_obj.estado == '3' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Estado</label>
+            <select name="estado" class="form-control">
+                <option value="1">Agendada</option>
+                <option value="2">Lecionada</option>
+                <option value="3" selected>Cancelada</option>
+            </select>
+        </div>
+        {% endif %}
+        <div class="form-group col-md-4">
+        </div>
+        <div class="form-group col-md-12">
+            <label for="inputName">Grupo</label>
+            <select autofocus name="grupo_id" class="form-control" required>
+                <option value="{{aula_obj.group.id}}" selected>{{aula_obj.group.nome}}</option>
+                {% for grupo in grupos %}
+                <option value={{grupo.id}}>{{grupo.nome}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="inputName">Sala</label>
+            <select name="classe_id" class="form-control" required>
+                <option value="{{aula_obj.classe.id}}">{{aula_obj.classe.nome}}</option>
+                {% for classe in classes %}
+                <option value={{classe.id}}>{{classe.nome}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="inputName">Professor(a)</label>
+            <select autofocus name="professor_id" class="form-control" required>
+                <option value="{{aula_obj.pro.id}}" selected>{{aula_obj.pro.nome}}</option>
+                {% for colaborador in professores %}
+                <option value={{colaborador.id}}>{{colaborador.nome}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputName">Data Atual da Aula </label>
+            <input type="text" class="form-control" id="inputEmail4" value="{{aula_obj.data_aula|date:"d/m/Y - H:i"}}" title="Data da aula." disabled>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputName">Nova Data</label>
+            <input type="datetime-local" name="nova_data" class="form-control" id="inputEmail4" title="Data da aula.">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-info float-right" formaction="/group/schedule_save/" title="Salvar alterações da aula.">Salvar</button>
+        </div>
+    </div>
+    {% if alunos_grupo %}
+    <hr />
+    <h4>Alunos </h4>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <table class="table table-responsive-sm">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width:10%;">#</th>
+                        <th scope="col" style="width:80%;">Nome</th>
+                        <th scope="col" style="width:10%;">Remover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alunos in alunos_grupo %}
+                    <tr>
+                        <td style="width:10%;">{{alunos.id}}</td>
+                        <td style="width:80%;">{{alunos.nome}}</td>
+                        <td style="width:10%;"><button type="submit" name="aluno_id" value="{{alunos.id}}" class="btn btn-light" formaction="/group/schedule_remove/" title="Remover aluno da aula.">&#x274C;</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+</form>
+{% endblock %}

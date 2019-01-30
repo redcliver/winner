@@ -57,7 +57,7 @@ class aula(models.Model):
     ES = (
         ('1', 'Agendada'),
         ('2', 'Lecionada'),
-        ('2', 'Cancelada'),
+        ('3', 'Cancelada'),
     )
     UN = (
         ('1', 'Tres Lagoas'),
@@ -70,6 +70,7 @@ class aula(models.Model):
     unidade = models.CharField(max_length=1, choices=UN, default=1)
     group = models.ForeignKey(grupo_aula, on_delete=models.CASCADE)
     pro = models.ForeignKey(colaborador, on_delete=models.CASCADE)
+    classe =models.ForeignKey(sala_aula, on_delete=models.CASCADE)
     presentes = models.ManyToManyField(presenca)
     data_aula = models.DateTimeField(default=timezone.now)
     data_cadastro = models.DateTimeField(default=timezone.now)

@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\winner"
+    "\\classe",
+    "\\grupo",
+    "\\grupo\\templates",
+    "\\grupo\\templates\\grupo",
+    "\\home",
+    "\\home\\templates",
+    "\\instituicao\\templates\\instituicao"
   ],
+  "SelectedNode": "\\grupo\\templates\\grupo\\aula_visualizar.html",
   "PreviewInSolutionExplorer": false
 }
