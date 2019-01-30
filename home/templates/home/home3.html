@@ -3,6 +3,14 @@
 {% block body %}
 {% load static %}
 <main >
-<h3>Bom dia, {{nome}}</h3>  
+    {% if hora >= 0 and hora <=12 %}
+        <h3>Bom dia, {{nome}}</h3>
+    {% endif %}
+    {% if hora >= 13 and hora <=17 %}
+        <h3>Bom tarde, {{nome}}</h3>
+    {% endif %}
+    {% if hora >= 18 and hora <=23 %}
+        <h3>Bom noite, {{nome}}</h3>
+    {% endif %}
 </main>
 {% endblock %}
