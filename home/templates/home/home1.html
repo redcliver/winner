@@ -1,8 +1,16 @@
-﻿{% extends 'base.html' %}
+﻿{% extends 'base_recepcionista.html' %}
 
 {% block body %}
 {% load static %}
 <main >
-<h3>Bom dia</h3>  
+    {% if hora >= '0' and '12' >= hora %}
+        <h3>Bom dia, {{nome}}</h3>
+    {% endif %}
+    {% if hora >= '13' and '17' >= hora %}
+        <h3>Bom tarde, {{nome}}</h3>
+    {% endif %}
+    {% if hora >= '18' and '23' >= hora %}
+        <h3>Bom noite, {{nome}}</h3>
+    {% endif %}  
 </main>
 {% endblock %}
