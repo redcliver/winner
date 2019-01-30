@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 def home(request):
     if request.user.is_authenticated:
         cargo = request.user.last_name
-        nome = cargo = request.user.get_short_name()
+        nome = request.user.get_short_name()
         if cargo == 'diretor':
             return render(request, 'home/home.html', {'title':'Home', 'nome':nome})
         elif cargo == 'recepcionista':
