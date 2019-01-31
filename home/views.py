@@ -9,7 +9,7 @@ from datetime import timedelta
 def home(request):
     if request.user.is_authenticated:
         cargo = request.user.last_name
-        nome = request.user.get_short_name()
+        nome = request.user.get_short_name().split(' ', 1)[0] 
         hora =  datetime.now().strftime('%H')
         if cargo == 'diretor':
             return render(request, 'home/home.html', {'title':'Home', 'nome':nome, 'hora':hora})
