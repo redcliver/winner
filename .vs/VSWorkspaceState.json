@@ -1,14 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\classe",
-    "\\grupo",
     "\\grupo\\templates",
     "\\grupo\\templates\\grupo",
-    "\\home",
     "\\home\\templates",
-    "\\instituicao\\templates\\instituicao"
+    "\\home\\templates\\home",
+    "\\sistema_login\\templates",
+    "\\sistema_login\\templates\\sistema_login",
+    "\\winner"
   ],
-  "SelectedNode": "\\grupo\\templates\\grupo\\aula_visualizar.html",
+  "SelectedNode": "\\winner\\settings.py",
   "PreviewInSolutionExplorer": false
 }
