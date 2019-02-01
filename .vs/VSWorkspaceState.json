@@ -1,14 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\grupo\\templates",
-    "\\grupo\\templates\\grupo",
+    "\\home",
     "\\home\\templates",
     "\\home\\templates\\home",
-    "\\sistema_login\\templates",
-    "\\sistema_login\\templates\\sistema_login",
     "\\winner"
   ],
-  "SelectedNode": "\\winner\\settings.py",
+  "SelectedNode": "\\home\\templates\\base_diretor.html",
   "PreviewInSolutionExplorer": false
 }

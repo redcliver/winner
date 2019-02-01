@@ -1,0 +1,72 @@
+﻿{% extends 'base_recepcao.html' %}
+
+{% block body %}
+{% load static %}
+    {% if msg %}
+<h1 style="text-align:center;">{{msg}}</h1><hr />
+    {%endif%}
+<h1>Editar Aluno</h1>
+<hr />
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="aluno_id" value="{{aluno_obj.id}}" />
+    <div class="form-row">
+        <div class="form-group col-md-9">
+            <label for="inputName">Nome Completo </label>
+            <input type="text" class="form-control" value="{{aluno_obj.nome}}" name="nome" title="Digite o nome completo.">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTel">Data de Nasc.</label>
+            <input type="date" class="form-control" value="{{aluno_obj.data_nasc|date:"Y-m-d"}}" name="data_nasc" title="Selecione a data de nascimento.">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTel">Telefone</label>
+            <input type="text" class="form-control" value="{{aluno_obj.telefone}}" name="tel" title="Digite o telefon.e">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputCel">Celular</label>
+            <input type="text" class="form-control" value="{{aluno_obj.celular}}" name="cel" title="Digite o celular.">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail">E-mail</label>
+            <input type="text" class="form-control" value="{{aluno_obj.email}}" name="mail" title="Digite o e-mail.">
+        </div>
+        {% if aluno_obj.estado == '1' %}
+        <div class="form-group col-md-3">
+            <label for="inputName">Estado </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="estado" id="exampleRadios1" value="1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Ativo
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="estado" id="exampleRadios2" value="2">
+                <label class="form-check-label" for="exampleRadios2">
+                    Inativo
+                </label>
+            </div>
+        </div>
+        {% endif %}
+        {% if aluno_obj.estado == '2' %}
+        <div class="form-group col-md-3">
+            <label for="inputName">Estado </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="estado" id="exampleRadios1" value="1" />
+                <label class="form-check-label" for="exampleRadios1">
+                    Ativo
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="estado" id="exampleRadios2" value="2" checked />
+                <label class="form-check-label" for="exampleRadios2">
+                    Inativo
+                </label>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <br />
+    <button type="submit" class="btn btn-info float-right" formaction="/student/save_rec" title="Alterar registro do aluno.">Salvar</button>
+</form>
+{% endblock %}

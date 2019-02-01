@@ -41,11 +41,15 @@ INSTALLED_APPS = [
     'app',
     'instituicao',
     'sistema_login',
-    'home',
+    'home_aluno',
+    'home_diretor',
+    'home_prof',
+    'home_recepcao',
     'aluno',
     'colaborador',
     'classe',
     'grupo',
+    'aulas',
 
     # Add your apps here to enable them
     'django.contrib.admin',
