@@ -50,6 +50,11 @@ INSTALLED_APPS = [
     'classe',
     'grupo',
     'aulas',
+    'frequencia',
+    'conta_pag',
+    'conta_rec',
+    'estoque',
+    'caixa',
 
     # Add your apps here to enable them
     'django.contrib.admin',
