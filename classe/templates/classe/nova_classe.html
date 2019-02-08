@@ -1,4 +1,4 @@
-﻿{% extends 'base.html' %}
+﻿{% extends 'base_recepcao.html' %}
 
 
 {% block body %}
@@ -6,7 +6,7 @@
     {% if msg %}
     <h1 style="text-align:center;">{{msg}}</h1><hr />
     {%endif%}
-    <h1>Nova Classe</h1>
+    <h1>Nova Sala de Aula</h1>
     <hr />
         <form method="post">
         {% csrf_token %}
