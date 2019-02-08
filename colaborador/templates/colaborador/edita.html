@@ -1,72 +1,72 @@
-﻿{% extends 'base.html' %}
+﻿{% extends 'base_recepcao.html' %}
 
 {% block body %}
 {% load static %}
     {% if msg %}
-        <h1 style="text-align:center;">{{msg}}</h1><hr />
+<h1 style="text-align:center;">{{msg}}</h1><hr />
     {%endif%}
-    <h1>Editar Colaborador</h1>
-    <hr />
-        <form method="post">
-        {% csrf_token %}
-            <input type="hidden" name="colaborador_id" value="{{colaborador_obj.id}}" />
-            <div class="form-row">
-                <div class="form-group col-md-9">
-                    <label for="inputName">Nome Completo </label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.nome}}" name="nome" title="Digite o nome completo.">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputTel">Data de Nasc.</label>
-                    <input type="date" class="form-control" value="{{colaborador_obj.data_nasc|date:"Y-m-d"}}" name="data_nasc" title="Selecione a data de nascimento.">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputTel">Telefone</label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.telefone}}" name="tel" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">                
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputCel">Celular</label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.celular}}" name="cel" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">                
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputEmail">E-mail</label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.email}}" name="mail" title="Digite o e-mail.">
-                </div>
-                {% if colaborador_obj.cargo == '1' %}
-                    <div class="form-group col-md-4">
-                        <label for="inputName">Função<strong>*</strong></label>
-                        <select name="cargo" class="form-control" required>
-                            <option value="1" selected>Diretor(a)</option>
-                            <option value="2">Professor(a)</option>
-                            <option value="3">Recepcionista</option>
-                        </select>
-                    </div>
-                {% endif %}
-                {% if colaborador_obj.cargo == '2' %}
-                    <div class="form-group col-md-4">
-                        <label for="inputName">Função<strong>*</strong></label>
-                        <select name="cargo" class="form-control" required>
-                            <option value="1">Diretor(a)</option>
-                            <option value="2" selected>Professor(a)</option>
-                            <option value="3">Recepcionista</option>
-                        </select>
-                    </div>
-                {% endif %}
-                {% if colaborador_obj.cargo == '3' %}
-                    <div class="form-group col-md-4">
-                        <label for="inputName">Função<strong>*</strong></label>
-                        <select name="cargo" class="form-control" required>
-                            <option value="1">Diretor(a)</option>
-                            <option value="2">Professor(a)</option>
-                            <option value="3" selected>Recepcionista</option>
-                        </select>
-                    </div>
-                {% endif %}
-            </div>
-            <br />
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <button type="submit" class="btn btn-info float-right" formaction="/crew/save" title="Alterar registro do colaborador.">Salvar</button>
-                </div>
-            </div>
-        </form>
+<h1>Editar Colaborador</h1>
+<hr />
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="colaborador_id" value="{{colaborador_obj.id}}" />
+    <div class="form-row">
+        <div class="form-group col-md-9">
+            <label for="inputName">Nome Completo </label>
+            <input type="text" class="form-control" value="{{colaborador_obj.nome}}" name="nome" title="Digite o nome completo.">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTel">Data de Nasc.</label>
+            <input type="date" class="form-control" value="{{colaborador_obj.data_nasc|date:"Y-m-d"}}" name="data_nasc" title="Selecione a data de nascimento.">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTel">Telefone</label>
+            <input type="text" class="form-control" value="{{colaborador_obj.telefone}}" name="tel" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputCel">Celular</label>
+            <input type="text" class="form-control" value="{{colaborador_obj.celular}}" name="cel" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail">E-mail</label>
+            <input type="text" class="form-control" value="{{colaborador_obj.email}}" name="mail" title="Digite o e-mail.">
+        </div>
+        {% if colaborador_obj.cargo == '1' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Função<strong>*</strong></label>
+            <select name="cargo" class="form-control" required>
+                <option value="1" selected>Diretor(a)</option>
+                <option value="2">Professor(a)</option>
+                <option value="3">Recepcionista</option>
+            </select>
+        </div>
+        {% endif %}
+        {% if colaborador_obj.cargo == '2' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Função<strong>*</strong></label>
+            <select name="cargo" class="form-control" required>
+                <option value="1">Diretor(a)</option>
+                <option value="2" selected>Professor(a)</option>
+                <option value="3">Recepcionista</option>
+            </select>
+        </div>
+        {% endif %}
+        {% if colaborador_obj.cargo == '3' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Função<strong>*</strong></label>
+            <select name="cargo" class="form-control" required>
+                <option value="1">Diretor(a)</option>
+                <option value="2">Professor(a)</option>
+                <option value="3" selected>Recepcionista</option>
+            </select>
+        </div>
+        {% endif %}
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-info float-right" formaction="/crew/save" title="Alterar registro do colaborador.">Salvar</button>
+        </div>
+    </div>
+</form>
 {% endblock %}

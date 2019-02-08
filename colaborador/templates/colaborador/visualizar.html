@@ -1,64 +1,64 @@
-﻿{% extends 'base.html' %}
+﻿{% extends 'base_recepcao.html' %}
 
 {% block body %}
 {% load static %}
-    <h1>Visualizar Colaborador</h1>
-    <hr />
-        <form method="post" action="/crew/search">
-        {% csrf_token %}
-            <input type="hidden" name="colaborador_id" value="{{colaborador_obj.id}}" />
-            <div class="form-row">
-                <div class="form-group col-md-9">
-                    <label for="inputName">Nome Completo </label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.nome}}" disabled>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputTel">Data de Nasc.</label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.data_nasc|date:"d/m/Y"}}" disabled>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputTel">Telefone</label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.telefone}}" disabled>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputCel">Celular</label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.celular}}" disabled>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputEmail">E-mail</label>
-                    <input type="text" class="form-control" value="{{colaborador_obj.email}}" disabled>
-                </div>
-                {% if colaborador_obj.cargo == '1' %}
-                <div class="form-group col-md-4">
-                    <label for="inputName">Função<strong>*</strong></label>
-                    <select name="cargo" class="form-control" required>
-                        <option value="1" selected disabled>Diretor(a)</option>
-                    </select>
-                </div>
-                {% endif %}
-                {% if colaborador_obj.cargo == '2' %}
-                <div class="form-group col-md-4">
-                    <label for="inputName">Função<strong>*</strong></label>
-                    <select name="cargo" class="form-control" required>
-                        <option value="2" selected disabled>Professor(a)</option>
-                    </select>
-                </div>
-                {% endif %}
-                {% if colaborador_obj.cargo == '3' %}
-                <div class="form-group col-md-4">
-                    <label for="inputName">Função<strong>*</strong></label>
-                    <select name="cargo" class="form-control" >
-                        <option value="3" selected disabled>Recepcionista</option>
-                    </select>
-                </div>
-                {% endif %}
-            </div>
+<h1>Visualizar Colaborador</h1>
+<hr />
+<form method="post" action="/crew/search">
+    {% csrf_token %}
+    <input type="hidden" name="colaborador_id" value="{{colaborador_obj.id}}" />
+    <div class="form-row">
+        <div class="form-group col-md-9">
+            <label for="inputName">Nome Completo </label>
+            <input type="text" class="form-control" value="{{colaborador_obj.nome}}" disabled>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTel">Data de Nasc.</label>
+            <input type="text" class="form-control" value="{{colaborador_obj.data_nasc|date:"d/m/Y"}}" disabled>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputTel">Telefone</label>
+            <input type="text" class="form-control" value="{{colaborador_obj.telefone}}" disabled>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputCel">Celular</label>
+            <input type="text" class="form-control" value="{{colaborador_obj.celular}}" disabled>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail">E-mail</label>
+            <input type="text" class="form-control" value="{{colaborador_obj.email}}" disabled>
+        </div>
+        {% if colaborador_obj.cargo == '1' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Função<strong>*</strong></label>
+            <select name="cargo" class="form-control" required>
+                <option value="1" selected disabled>Diretor(a)</option>
+            </select>
+        </div>
+        {% endif %}
+        {% if colaborador_obj.cargo == '2' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Função<strong>*</strong></label>
+            <select name="cargo" class="form-control" required>
+                <option value="2" selected disabled>Professor(a)</option>
+            </select>
+        </div>
+        {% endif %}
+        {% if colaborador_obj.cargo == '3' %}
+        <div class="form-group col-md-4">
+            <label for="inputName">Função<strong>*</strong></label>
+            <select name="cargo" class="form-control">
+                <option value="3" selected disabled>Recepcionista</option>
+            </select>
+        </div>
+        {% endif %}
+    </div>
 
-            <br />
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <button type="submit" class="btn btn-info float-right" title="Editar dados do colaborador.">Editar</button>
-                </div>
-            </div>
-        </form>
+    <br />
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-info float-right" title="Editar dados do colaborador.">Editar</button>
+        </div>
+    </div>
+</form>
 {% endblock %}

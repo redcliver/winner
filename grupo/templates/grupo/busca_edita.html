@@ -1,19 +1,19 @@
-﻿{% extends 'base.html' %}
+﻿{% extends 'base_recepcao.html' %}
 
 {% block body %}
 {% load static %}
     {% if msg %}
-        <h1 style="text-align:center;">{{msg}}</h1><hr />
+<h1 style="text-align:center;">{{msg}}</h1><hr />
     {%endif%}
 <h1>Selecione o Grupo</h1><hr /><br />
-    <form method="POST" action="/group/edit">
+<form method="POST" action="/group/edit">
     {%csrf_token%}
     <div class="form-row">
         <div class="form-group col-md-12">
             <select name="grupo_id" class="form-control" required title="Selecione o grupo.">
-                <option disabled selected > -- Grupos -- </option>
+                <option disabled selected> -- Grupos -- </option>
                 {% for grupo_aula in grupos %}
-                    <option value={{grupo_aula.id}}>{{grupo_aula.nome}}</option>
+                <option value={{grupo_aula.id}}>{{grupo_aula.nome}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -23,5 +23,5 @@
             <button type="submit" class="btn btn-info float-right" title="Editar grupo.">Editar</button>
         </div>
     </div>
-    </form>
+</form>
 {% endblock %}
