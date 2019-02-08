@@ -56,6 +56,18 @@ def schedule_search_rec(request):
         return render(request, 'aulas/aula_busca_rec.html', {'title':'Selecione a Aula', 'aulas_all':aulas_all, 'data_inicio':data_inicio, 'data_fim':data_fim})
     return render(request, 'aulas/aula_busca_rec.html', {'title':'Selecione a Aula', 'aulas_all':aulas_all, 'data_inicio':data_inicio, 'data_fim':data_fim})
 
+def schedule_search_pro(request):
+    data_inicio = datetime.now() + timedelta(days=-1)
+    data_inicio = data_inicio.strftime('%Y-%m-%d')
+    data_fim = datetime.now().strftime('%Y-%m-%d')
+    aulas_all = aula.objects.filter(data_aula__date=(data_fim)).all().order_by('data_aula')
+    if request.method == 'POST' and request.POST.get('data_inicio') != None and request.POST.get('data_fim') != None:
+        data_inicio = request.POST.get('data_inicio')
+        data_fim = request.POST.get('data_fim')
+        aulas_all = aula.objects.filter(data_aula__range=(data_inicio,data_fim)).all().order_by('data_aula')
+        return render(request, 'aulas/aula_busca_pro.html', {'title':'Selecione a Aula', 'aulas_all':aulas_all, 'data_inicio':data_inicio, 'data_fim':data_fim})
+    return render(request, 'aulas/aula_busca_pro.html', {'title':'Selecione a Aula', 'aulas_all':aulas_all, 'data_inicio':data_inicio, 'data_fim':data_fim})
+
 def schedule_detail_rec(request):
     data_inicio = datetime.now() + timedelta(days=-1)
     data_inicio = data_inicio.strftime('%Y-%m-%d')
@@ -70,6 +82,21 @@ def schedule_detail_rec(request):
         alunos_grupo = grupo_obj.alunos.all().order_by('nome')
         return render(request, 'aulas/aula_visualizar_rec.html', {'title':'Visualizar Aula', 'aula_obj':aula_obj, 'alunos_grupo':alunos_grupo})
     return render(request, 'aulas/aula_busca_rec.html', {'title':'Selecione a Aula', 'aulas_all':aulas_all, 'data_inicio':data_inicio, 'data_fim':data_fim})
+
+def schedule_detail_pro(request):
+    data_inicio = datetime.now() + timedelta(days=-1)
+    data_inicio = data_inicio.strftime('%Y-%m-%d')
+    data_fim = datetime.now().strftime('%Y-%m-%d')
+    aulas_all = aula.objects.filter(data_aula__date=(data_fim)).all().order_by('data_aula')
+    if request.method == 'POST' and request.POST.get('aula_id') != None:
+        aula_id = request.POST.get('aula_id')
+        data_fim = request.POST.get('data_fim')
+        aula_obj = aula.objects.filter(id=aula_id).get()
+        grupo_id = aula_obj.group.id
+        grupo_obj = grupo_aula.objects.filter(id=grupo_id).get()
+        alunos_grupo = grupo_obj.alunos.all().order_by('nome')
+        return render(request, 'aulas/aula_visualizar_pro.html', {'title':'Visualizar Aula', 'aula_obj':aula_obj, 'alunos_grupo':alunos_grupo})
+    return render(request, 'aulas/aula_busca_pro.html', {'title':'Selecione a Aula', 'aulas_all':aulas_all, 'data_inicio':data_inicio, 'data_fim':data_fim})
 
 def schedule_edit_rec(request):
     data_inicio = datetime.now() + timedelta(days=-1)
